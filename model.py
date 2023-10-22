@@ -1,10 +1,10 @@
 import pandas as pd
 from ydata_profiling import ProfileReport
 import numpy as np
-from sklearn.preprocessing import StandardScaler, MinMaxScaler
-from sklearn.model_selection import train_test_split
-from sklearn.linear_model import LinearRegression, LogisticRegression
-from sklearn.metrics import r2_score, accuracy_score, precision_score, recall_score, f1_score
+from scikit-learn.preprocessing import StandardScaler, MinMaxScaler
+from scikit-learn.model_selection import train_test_split
+from scikit-learn.linear_model import LinearRegression, LogisticRegression
+from scikit-learn.metrics import r2_score, accuracy_score, precision_score, recall_score, f1_score
 np.random.seed(42)
 
 
@@ -55,13 +55,13 @@ def fit_and_save_model(X_train, X_test, y_train, y_test, path="data/model_weight
     y_pred_lr = lr.predict_proba(X_test)
     y_pred = np.argmax(y_pred_lr > 0.5, axis = 1)
     accuracy = accuracy_score(y_test, y_pred)
-    print(f"Model accuracy is {accuracy}")
+    #print(f"Model accuracy is {accuracy}")
 
     with open(path, "wb") as file:
         dump(model, file)
 
     print(f"Model was saved to {path}")
-
+    return accuracy
 
 def load_model_and_predict(df, path="data/model_weights.mw"):
     with open(path, "rb") as file:
