@@ -57,7 +57,7 @@ def process_side_bar_inputs():
     #user_X_df = preprocessed_X_df[:1]
     #write_user_data(user_X_df)
 
-    prediction, prediction_probas = load_model_and_predict(user_X_df)
+    #prediction, prediction_probas = load_model_and_predict(user_X_df)
     #write_prediction(prediction, prediction_probas)
     accuracy = fit_and_save_model(X_train, X_test, y_train, y_test)
     show_accuracy(accuracy)
